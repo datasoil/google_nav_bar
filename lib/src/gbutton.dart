@@ -14,6 +14,7 @@ class GButton extends StatefulWidget {
   final Color? hoverColor;
   final Color? iconActiveColor;
   final Color? textColor;
+  final Color? textActiveColor;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final TextStyle? textStyle;
@@ -33,12 +34,14 @@ class GButton extends StatefulWidget {
   final String? semanticLabel;
   final GnavStyle? style;
   final double? textSize;
+  final bool? expandedTab;
 
   const GButton({
     Key? key,
     this.active,
     this.haptic,
     this.backgroundColor,
+    this.expandedTab,
     required this.icon,
     this.iconColor,
     this.rippleColor,
@@ -46,6 +49,7 @@ class GButton extends StatefulWidget {
     this.iconActiveColor,
     this.text = '',
     this.textColor,
+    this.textActiveColor,
     this.padding,
     this.margin,
     this.duration,
@@ -102,14 +106,10 @@ class _GButtonState extends State<GButton> {
         iconActiveColor: widget.iconActiveColor,
         iconColor: widget.iconColor,
         icon: widget.icon,
-        text: Text(
-          widget.text,
-          style: widget.textStyle ??
-              TextStyle(
-                fontWeight: FontWeight.w600,
-                color: widget.textColor,
-              ),
-        ),
+        expanded: widget.expandedTab,
+        text: widget.text,
+        textActiveColor: widget.textActiveColor,
+        textColor: widget.textColor,
       ),
     );
   }

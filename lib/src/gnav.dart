@@ -36,6 +36,7 @@ class GNav extends StatefulWidget {
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
     this.style = GnavStyle.google,
     this.textSize,
+    this.expandedTab = false,
   }) : super(key: key);
 
   final List<GButton> tabs;
@@ -64,6 +65,7 @@ class GNav extends StatefulWidget {
   final MainAxisAlignment mainAxisAlignment;
   final GnavStyle? style;
   final double? textSize;
+  final bool? expandedTab;
 
   @override
   _GNavState createState() => _GNavState();
@@ -112,7 +114,8 @@ class _GNavState extends State<GNav> {
                       iconActiveColor: t.iconActiveColor ?? widget.activeColor,
                       iconColor: t.iconColor ?? widget.color,
                       iconSize: t.iconSize ?? widget.iconSize,
-                      textColor: t.textColor ?? widget.activeColor,
+                      textColor: t.textColor ?? widget.color,
+                      textActiveColor: t.textActiveColor ?? widget.activeColor,
                       rippleColor: t.rippleColor ?? widget.rippleColor,
                       hoverColor: t.hoverColor ?? widget.hoverColor,
                       padding: t.padding ?? widget.padding,
@@ -127,6 +130,7 @@ class _GNavState extends State<GNav> {
                       backgroundColor:
                           t.backgroundColor ?? widget.tabBackgroundColor,
                       duration: widget.duration,
+                      expandedTab: t.expandedTab ?? widget.expandedTab,
                       onPressed: () {
                         if (!clickable) return;
                         setState(() {
